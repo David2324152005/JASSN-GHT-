@@ -14,6 +14,7 @@
     <nav class="nav-buttons">
       <button>Iniciar Sesión / Registrarse</button>
       <button>🌐 Idioma</button>
+      <button id="servicios">Servicios</button>
 
     </nav>
   </header>
@@ -25,27 +26,101 @@
       <p>El FESTIVAL de jazz más grande y movido de Suiza</p>
       <br><br>  
       <nav class="nav-buttons">
-      <button>Venta de Entradas</button>
-      <button>Pago Seguro</button>
-      <button>Escanea tu código</button>
-      <button>Generar Código de barras</button>
+      <a href="venta.html"  class="nav-button">Venta De Entradas</a>
+      <a href="venta.html"  class="nav-button">Venta Segura</a>
+      <a href="codigo.html" class="nav-button">Escanea tu código</a>
+      <a href="codigo.html" class="nav-button">Generar Código de barras</a>
     </nav>
     </div>
   </section>
 
   <!-- Sección de compra de entradas -->
-  <section class="ticket-section">
-    <div class="ticket-box">
-      <h2>Compra tus Entradas</h2>
-      <p>Selecciona el método de compra:</p>
-      <ul>
-        <li>🎟️ Agencias tradicionales</li>
-        <li>🌐 Venta en línea (Web)</li>
-        <li>🚆 Ferrocarriles SBB (boleto combinado)</li>
+<section class="ticket-section">
+  <div class="ticket-box">
+    <div class="ticket-text">
+      <h2>Compra De Entradas</h2>
+      <p class="ticket-subtitle">Selecciona el método con el que compraras tus boletos:</p>
+      <ul class="ticket-methods">
+        <li>🎟️ <strong>Agencias tradicionales</strong></li>
+        <li>🌐 <strong>Venta en línea (Web)</strong></li>
+        <li>🚆 <strong>Ferrocarriles SBB (boleto combinado)</strong></li>
       </ul>
-      <button class="buy-button">Comprar Ahora</button>
     </div>
-  </section>
+    <div>
+      <a href="venta.html" class="nav-button">Compra Ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="services-section">
+  <h2>Servicios del Festival</h2>
+  <div class="services-container">
+    <div class="service-card">
+      <h3>🎵 Escenarios en Vivo</h3>
+      <p>Disfruta de presentaciones en vivo con artistas de jazz de renombre internacional y talentos locales.</p>
+    </div>
+    <div class="service-card">
+      <h3>🍔 Zona Gastronómica</h3>
+      <p>Saborea comida internacional, bebidas típicas y experiencias gourmet en nuestros puntos gastronómicos.</p>
+    </div>
+    <div class="service-card">
+      <h3>🎨 Actividades Culturales</h3>
+      <p>Talleres de arte, exposiciones, jam sessions y espacios para aprender sobre la historia del jazz.</p>
+    </div>
+    <div class="service-card">
+      <h3>🚉 Acceso Multimodal</h3>
+      <p>Entrada combinada con trenes SBB para llegar cómodo y rápido al corazón del festival.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de Idioma -->
+<div id="language-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn" onclick="toggleModal()">×</span>
+    <h3>Selecciona tu idioma</h3>
+    <ul class="language-options">
+      <li>🇪🇸 Español</li>
+      <li>🇬🇧 English</li>
+      <li>🇩🇪 Deutsch</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function toggleModal() {
+    const modal = document.getElementById('language-modal');
+    modal.classList.toggle('hidden');
+  }
+
+  // Asignar evento al botón de idioma
+  document.addEventListener('DOMContentLoaded', () => {
+    const langBtn = document.querySelector('.nav-buttons button:nth-child(2)');
+    langBtn.addEventListener('click', toggleModal);
+  });
+</script>
+
+<script>
+  function toggleModal() {
+    const modal = document.getElementById('language-modal');
+    modal.classList.toggle('hidden');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const langBtn = document.querySelector('.nav-buttons button:nth-child(2)');
+    langBtn.addEventListener('click', toggleModal);
+
+    // Scroll suave a la sección "servicios"
+    const serviciosBtn = document.getElementById('servicios');
+    const serviciosSection = document.querySelector('section#servicios');
+
+    serviciosBtn.addEventListener('click', () => {
+      serviciosSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+
 
 </body>
 </html>
