@@ -1,0 +1,121 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0a0a0a;
+  color: white;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #222;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #7a1879;
+}
+
+.nav-buttons button {
+  margin-left: 1rem;
+  background: transparent;
+  border: 0;
+  color: white;
+  padding: 10pt;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.3s;
+}
+
+.nav-buttons button:hover {
+  background: linear-gradient(135deg, #7a1879, #012340);
+  color: #000;
+  box-shadow: 0 0 10px (135deg, #7a1879, #012340);
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://i.pinimg.com/736x/0c/44/a9/0c44a9d36d243a3929cafc07a33a24c9.jpg') no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+    background: black;
+    opacity: 85%;
+    padding: 10rem;
+  border-radius: 10px;
+}
+
+.hero h1 {
+  font-size: 4.0000001rem;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #ccc;
+}
+
+/* Ticket Section */
+.ticket-section {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  background: #121212;
+}
+
+.ticket-box {
+  background: linear-gradient(135deg, #7a1879, #012340);
+  padding: 10rem;
+  display: flex;
+  border-radius: 15px;
+  text-align: center;
+  color: #000;
+  box-shadow: 0 0 15px #7a1879(0, 255, 153, 0.5);
+}
+
+.ticket-box h2 {
+  margin-bottom: 1rem;
+}
+
+.ticket-box ul {
+  margin: 1rem 0;
+  list-style: none;
+}
+
+.ticket-box li {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.buy-button {
+  background: linear-gradient(135deg, #7a1879, #012340);
+  border: none;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-button:hover {
+  background: #7a1879;
+  box-shadow: 0 0 12px #7a1879;
+}
