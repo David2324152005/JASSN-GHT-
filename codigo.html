@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JazzN!ghts - Código</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+  <style>
+    .scanner, .barcode-generator {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 2rem;
+      margin: 2rem;
+      border-radius: 15px;
+      color: white;
+      box-shadow: 0 0 10px #7a1879;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    #barcode {
+      margin-top: 1rem;
+      display: block;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+
+    .barcode-generator button {
+      background: linear-gradient(135deg, #7a1879, #012340);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .barcode-generator button:hover {
+      box-shadow: 0 0 12px #7a1879;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="header">
+    <div class="logo">JazzN!ghts</div>
+    <nav class="nav-buttons">
+      <button onclick="location.href='index.html'">Inicio</button>
+      <button>🌐 Idioma</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Gestión de Códigos</h1>
+      <p>Escanea tu entrada o genera un código de barras personalizado</p>
+    </div>
+  </section>
+
+  <!-- Escáner QR -->
+<div class="scanner">
+  <h2>Escaneo de Código QR</h2>
+  <button onclick="startScan()">Activar cámara para escanear</button>
+  <div id="reader" style="width:300px; margin-top: 1rem;"></div>
+  <p id="scan-result"></p>
+  <button onclick="stopScan()">Detener escaneo</button>
+</div>
+
+  <!-- Generador de código de barras -->
+  <section class="barcode-generator">
+    <h2>Generar Código de Barras</h2>
+    <input type="text" id="barcode-input" placeholder="Escribe el número de entrada">
+    <button onclick="generarCodigo()">Generar</button>
+    <svg id="barcode"></svg>
+  </section>
+
+<script>
+  let html5QrcodeScanner;
+
+  function startScan() {
+    const reader = document.getElementById('reader');
+    const resultElement = document.getElementById('scan-result');
+    html5QrcodeScanner = new Html5Qrcode("reader");
+
+    html5QrcodeScanner.start(
+      { facingMode: "environment" },
+      {
+        fps: 10,
+        qrbox: 250
+      },
+      qrCodeMessage => {
+        resultElement.innerText = `Código detectado: ${qrCodeMessage}`;
+        stopScan(); // Detiene después de escanear
+      },
+      errorMessage => {
+        // puedes loguear si quieres errores, pero no mostramos nada al usuario
+      }
+    ).catch(err => {
+      resultElement.innerText = `Error al iniciar la cámara: ${err}`;
+    });
+  }
+
+  function stopScan() {
+    if (html5QrcodeScanner) {
+      html5QrcodeScanner.stop().then(() => {
+        html5QrcodeScanner.clear();
+      }).catch(err => {
+        console.error("Error al detener la cámara", err);
+      });
+    }
+  }
+</script>
+
+
+</body>
+</html>
